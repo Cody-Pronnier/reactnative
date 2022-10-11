@@ -19,10 +19,16 @@ jobs:
           node-version: 16.x
       - name: Install dependencies
         run: npm install
-      - name: Install java
-        run: apt-get update && apt-get -y install openjdk-8-jdk  && apt-get -y install ant
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          cache: 'gradle'
       - name: Build Artefact 
         run: cd android && ./gradlew assembleRelease
+
+
+        
   test-react:
     runs-on: ubuntu-latest
     steps:
