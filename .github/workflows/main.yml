@@ -20,7 +20,7 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Build Artefact 
-        run: .gradlew assembleRelease
+        run: ./gradlew assembleRelease
   test-react:
     runs-on: ubuntu-latest
     steps:
