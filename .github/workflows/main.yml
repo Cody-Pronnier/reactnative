@@ -25,7 +25,7 @@ jobs:
           java-version: '17'
           cache: 'gradle'
       - name: Build Artefact 
-        run: cd android && ./gradlew assembleRelease
+        run: cd android && chmod +x gradlew && ./gradlew assembleRelease
 
 
         
