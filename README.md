@@ -63,3 +63,5 @@ ainsi que la clé privée de votre poste
    - name: run deploy
         run: rsync -avz .\android\app\build\outputs\apk\release\app-release.apk ${{ secrets.USERNAME }}@${{ secrets.HOST }}:~/mobile/
 
+https://github.com/Cody-Pronnier/reactnative
+https://github.com/Cody-Pronnier/nfschoolreact
