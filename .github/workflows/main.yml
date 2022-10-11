@@ -43,6 +43,7 @@ jobs:
       - name: Run tests 
         run: npm run test
   deploy-react:
+    needs: [build-react, test-react]
     runs-on: ubuntu-latest
     steps:
       - name: Clone repository
