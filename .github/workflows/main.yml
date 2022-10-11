@@ -37,7 +37,7 @@ jobs:
         run: ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} mkdir -p ./mobile/apk
 
       - name: run deploy
-        run: rsync -avz ./android/app/build/outputs/apk/release/app-release.apk ${{ secrets.USERNAME }}@${{ secrets.HOST }}:~/mobile/
+        run: rsync -avz ./android/app/build/outputs/apk/release/app-release.apk ${{ secrets.USERNAME }}@${{ secrets.HOST }}:~/mobile/apk/
 
       - name: renom dossier apk
         run: ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} 'mv ~/mobile/apk ~/mobile/apk-$(date +%Y%m%d_%H%M%S)'
