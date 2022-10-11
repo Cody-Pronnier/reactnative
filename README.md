@@ -13,12 +13,11 @@ on:
     branches: [ <Nom de votre branche par défaut: master> ]
 
 ### Build votre projet react sur un ubuntu et installer les dépendances
-jobs:
-  build-react:
     runs-on: ubuntu-latest
     steps:
       - name: Clone repository
         uses: actions/checkout@v2
+
       - name: Use Node.js 16.x
         uses: actions/setup-node@v1
         with:
@@ -26,9 +25,9 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-### Aller dans le dossier artefact et lancer la commande gradlew assembleRelease
+### Aller dans le dossier artefact et lancer la commande gradlew assembleRelease et on lui donne les droits d'écriture
       - name: Build Artefact 
-        run: cd android && ./gradlew assembleRelease
+        run: cd android && chmod +x gradlew && ./gradlew assembleRelease
 
 ### Installer le paquet java
       - uses: actions/setup-java@v3
@@ -37,18 +36,7 @@ jobs:
           java-version: '17'
           cache: 'gradle'
 ### Executer les tests de base de votre projet (déjà inclut à la création de l'app)
-  test-react:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Clone repository
-        uses: actions/checkout@v2
-      - name: Use Node.js 16.x
-        uses: actions/setup-node@v1
-        with:
-          node-version: 16.x
-      - name: Install dependencies
-        run: npm install
-      - name: Run test 
+- name: Run tests 
         run: npm run test
 
 ### variables secret
