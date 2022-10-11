@@ -64,7 +64,9 @@ jobs:
       - name: ajout Known Hosts
         run: ssh-keyscan -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
       - name: test
-        run: ls
+        run: pwd
+      - name: test2
+        run: cd ~/android/
       - name: run deploy
         run: rsync -avz ~/android/app/build/outputs/apk/release/app-release.apk ${{ secrets.USERNAME }}@${{ secrets.HOST }}:~/mobile/
 
