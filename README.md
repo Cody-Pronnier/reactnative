@@ -50,6 +50,12 @@ ainsi que la clé privée de votre poste
 ### On copie dans dossier build avec rsync en ssh avec notre login du serveur distant et l'ip de ce serveur dans le dossier /web/build
    - name: run deploy
         run: rsync -avz .\android\app\build\outputs\apk\release\app-release.apk ${{ secrets.USERNAME }}@${{ secrets.HOST }}:~/mobile/
+### on crée le dossier apk dans le serveur
+      - name: création dossier apk
+        run: ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} mkdir -p ./mobile/apk
+
+## on remane le dossier apk avec la date actuelle
+      - name: renom dossier apk
+        run: ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} 'mv ~/mobile/apk ~/mobile/apk-$(date +%Y%m%d_%H%M%S)'
 
 https://github.com/Cody-Pronnier/reactnative
-https://github.com/Cody-Pronnier/nfschoolreact
