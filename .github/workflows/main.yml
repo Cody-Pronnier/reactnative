@@ -20,7 +20,7 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Build Artefact 
-        run: cd C:\NFS\reactnative\android && ./gradlew assembleRelease
+        run: cd android && ./gradlew assembleRelease
   test-react:
     runs-on: ubuntu-latest
     steps:
@@ -55,7 +55,7 @@ jobs:
       - name: ajout Known Hosts
         run: ssh-keyscan -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
       - name: run deploy
-        run: rsync -avz ~\NFS\reactnative\android\app\build\outputs\apk\release\app-release.apk ${{ secrets.USERNAME }}@${{ secrets.HOST }}:~/mobile/
+        run: rsync -avz .\android\app\build\outputs\apk\release\app-release.apk ${{ secrets.USERNAME }}@${{ secrets.HOST }}:~/mobile/
 
 
 
